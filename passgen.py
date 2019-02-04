@@ -79,10 +79,16 @@ def generate_master(word_count, repeat):
     print('\n')
 
 
+def generate_master_continuous(word_count):
+    generate_master(word_count, 1)
+    while False if getpass.getpass('Another password? (n = no): ') in ['n', 'N'] else True:
+        generate_master(word_count, 1)
+
+
 if __name__ == '__main__':
     if len(sys.argv) > 2:
         generate_master(int(sys.argv[1]), int(sys.argv[2]))
     elif len(sys.argv) > 1:
-        generate_master(int(sys.argv[1]), 1)
+        generate_master_continuous(int(sys.argv[1]))
     elif test_libraries():
         generate_password()
